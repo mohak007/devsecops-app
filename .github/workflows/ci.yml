@@ -29,12 +29,13 @@ jobs:
       - name: Build Docker Image
         run: docker build -t yourdockerhubusername/devsecops-app .
 
-      - name: Install Trivy
-        run: |
-          sudo apt-get install wget -y
-          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.45.0_Linux-64bit.deb
-          sudo dpkg -i trivy_0.45.0_Linux-64bit.deb
-
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'yourdockerhubusername/devsecops-app'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL'
       - name: Scan Docker Image
         run: trivy image yourdockerhubusername/devsecops-app
       - name: Login to DockerHub
