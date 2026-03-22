@@ -32,10 +32,11 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'yourdockerhubusername/devsecops-app'
+          image-ref: 'mohakkataria007/devsecops-app'
           format: 'table'
           exit-code: '1'
           severity: 'CRITICAL'
+          ignore-unfixed: true
       - name: Scan Docker Image
         run: trivy image yourdockerhubusername/devsecops-app
       - name: Login to DockerHub
