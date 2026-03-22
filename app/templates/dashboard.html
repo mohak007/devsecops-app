@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevSecOps Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>🚀 DevSecOps Pipeline Dashboard</h1>
+
+<div class="container">
+    <div class="card">
+        <h2>Pipeline Status</h2>
+        <p>{{ data.status }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Last Build</h2>
+        <p>{{ data.last_build }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Security Scan</h2>
+        <p>{{ data.vulnerabilities }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Application</h2>
+        <p>{{ data.app_status }}</p>
+    </div>
+</div>
+
+</body>
+</html>
