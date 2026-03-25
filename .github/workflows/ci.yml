@@ -28,12 +28,10 @@ jobs:
       # Run tests (placeholder)
       - name: Run tests
         run: echo "No tests yet"
-      - name: Dependency Scan
-        run: pip-audit --ignore-vuln CVE-2026-4539
       
       # Dependency scan
       - name: Dependency Scan
-        run: pip-audit
+        run: pip-audit --ignore-vuln CVE-2026-4539
 
       # Build Docker image
       - name: Build Docker Image
