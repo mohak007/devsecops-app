@@ -1,3 +1,4 @@
+pygments>=2.19.3
 Flask==3.1.3  # Already clean
 gunicorn==25.1.0  # Already clean
 jaraco.context>=6.1.0  # Fixes CVE-2026-23949 HIGH
