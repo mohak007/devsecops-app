@@ -71,10 +71,10 @@ cd devsecops-app
 docker build -t devsecops-app .
 
 ### 3.Run the container
-docker run -p 5001:5001 devsecops-app
+docker run -p 5000:5000 devsecops-app
 
 ### 4. Open in browser
-http://localhost:5001
+http://localhost:5000
 
 ###5. CI Pipeline (GitHub Actions)
 The pipeline includes:
