@@ -6,8 +6,7 @@ An end-to-end DevSecOps project that demonstrates how to build, secure, and visu
 
 ## Overview
 
-This project implements a complete CI/CD pipeline with integrated security scanning and a custom-built dashboard to monitor pipeline status, security results, and application health.
-
+This project demonstrates an end-to-end DevSecOps pipeline that automates build, security scanning, containerization, and deployment of an application on AWS EKS using Kubernetes.
 ---
 
 ## Features
@@ -22,20 +21,43 @@ This project implements a complete CI/CD pipeline with integrated security scann
 ---
 
 ## Architecture
-Developer Push → GitHub Actions CI Pipeline → Dependency Scan (pip-audit) → Docker Build → Image Scan (Trivy) → Dashboard Visualization
-
----
+**Developer pushes code to GitHub
+GitHub Actions triggers CI pipeline
+Build + Dependency Scan (pip-audit)
+Docker Image Build
+Container Security Scan (Trivy)
+Push to DockerHub
+Deploy to AWS EKS (Kubernetes)
+Expose via LoadBalancer
+**---
 
 ## Tech Stack
 
 - **Backend:** Python, Flask  
 - **CI/CD:** GitHub Actions  
-- **Containerization:** Docker  
+- **Containerization:** Docker
+- **Orchestration:** Kubernetes  
+- **Cloud:** AWS(EC2, EKS, IAM, VPC)
 - **Security:** Trivy, pip-audit  
 - **Frontend:** HTML, CSS  
 
 ---
+## DevSecOps Features
 
+- Dependency Vulnerability Scanning(pip-audit)  
+- Container image scanning (Trivy)
+- CVE remediation (e.g., Pygments vulnerability fix)
+- Non-root container security best practices
+---
+ 
+## Features
+
+- Automated CI/CD pipeline
+- Dockerized application deployment
+- Kubernetes-based scaling and orchestration
+- Real-time dashboard UI for pipeline status
+- Secure and production-style setup
+---
 ## DevSecOps Workflow
 
 1. Code is pushed to `main` branch  
@@ -73,10 +95,22 @@ docker build -t devsecops-app .
 ### 3.Run the container
 docker run -p 5000:5000 devsecops-app
 
-### 4. Open in browser
+### 4. Deployment Steps(EKS)
+eksctl create cluster --name devsecops-cluster --region ap-south-1
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+### 5. Access Application
+
+kubectl get svc
+
+
+
+### 6. Open in browser
 http://localhost:5000
 
-###5. CI Pipeline (GitHub Actions)
+### 7. CI Pipeline (GitHub Actions)
 The pipeline includes:
   - Code checkout
   - Dependency installation
